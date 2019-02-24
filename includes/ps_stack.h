@@ -1,0 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_stack.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsprigga <jsprigga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/12 09:53:36 by jsprigga          #+#    #+#             */
+/*   Updated: 2019/02/19 10:29:05 by jsprigga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PS_STACK_H
+# define PS_STACK_H
+
+# include "libft.h"
+
+typedef struct	s_elem
+{
+	int				value;
+	struct s_elem	*next;
+	struct s_elem	*prev;
+}				t_elem;
+
+typedef	struct	s_stack
+{
+	t_elem	*head;
+	int		size;
+	char	*name;
+	int		grade;
+}				t_stack;
+
+t_elem			*stack_pop_elem(t_stack *stack);
+int				stack_put_elem(t_stack *stack, t_elem *new_elem);
+int				stack_put(t_stack *stack, int value);
+int				stack_get_average(t_stack *stack, int *average);
+
+void			stack_ini(t_stack *stack, char *name);
+void			stack_clear(t_stack *stack);
+void			stack_copy(t_stack *copy, t_stack *srcs);
+int				*stack_to_array(const t_stack *stack);
+int				stack_is_sort(t_stack	*stack);
+
+int				stack_push(t_stack *in, t_stack *out);
+int				stack_swap(t_stack *stack);
+int				stack_rotate(t_stack *stack);
+int				stack_rev_rotate(t_stack *stack);
+
+void			memory_error(void);
+void			comb_sort(int *data, int size);
+#endif
